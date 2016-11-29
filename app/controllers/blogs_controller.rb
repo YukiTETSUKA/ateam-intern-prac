@@ -4,7 +4,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
+    @blog = Blog.new
   end
 
   # GET /blogs/1
@@ -28,7 +28,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to :root, notice: 'Blog was successfully created.' }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
@@ -70,5 +70,6 @@ class BlogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.fetch(:blog, {})
+      params.require(:blog).permit(:body)
     end
 end
