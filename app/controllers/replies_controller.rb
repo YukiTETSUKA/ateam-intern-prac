@@ -7,7 +7,7 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       message = @reply.save ? 'Reply was successfully created.' : 'Failed'
-      format.html { redirect_to request.referer, notice: message }
+      format.html { redirect_to :back, notice: message }
     end
   end
 

@@ -27,7 +27,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       message = blog.increment(:like).save ? 'Success' : 'Failed'
-      format.html { redirect_to request.referer, notice: message }
+      format.html { redirect_to :back, notice: message }
     end
   end
 
