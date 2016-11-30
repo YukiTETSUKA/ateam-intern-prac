@@ -1,4 +1,4 @@
-<%= link_to '戻る', request.referer %>
+<%= link_to '戻る', :controller => 'blogs', :action => 'index' %>
 
 <% blog = Blog.find(params[:id]) %>
 <p>
