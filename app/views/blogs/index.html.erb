@@ -7,9 +7,11 @@
   <% Blog.all.order('id DESC').each do |blog| %>
     <p>
       <span><%= blog[:id] %>: <%= link_to blog[:body], blog %></span><br />
-      <span><%= link_to 'いいね', "likes/#{blog[:id]}", :method => :post %>:<%= blog[:like] %></span>|
-      <span>コメント数: </span>
-      <span>投稿日時: <%= blog[:created_at] %></span>
+      <span>
+        <%= link_to 'いいね', "likes/#{blog[:id]}", :method => :post %>:<%= blog[:like] %>|
+        コメント数: <%= blog.reply.length %>
+        投稿日時: <%= blog[:created_at] %>
+      </span>
     </p>
   <% end %>
 </div>

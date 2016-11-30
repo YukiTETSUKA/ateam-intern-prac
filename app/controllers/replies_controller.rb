@@ -6,13 +6,8 @@ class RepliesController < ApplicationController
     @reply = Reply.new(reply_params)
 
     respond_to do |format|
-      if @reply.save
-        format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
-        format.json { render :show, status: :created, location: @reply }
-      else
-        format.html { render :new }
-        format.json { render json: @reply.errors, status: :unprocessable_entity }
-      end
+      message = @reply.save ? 'Reply was successfully created.' : 'Failed'
+      format.html { redirect_to request.referer, notice: message }
     end
   end
 
