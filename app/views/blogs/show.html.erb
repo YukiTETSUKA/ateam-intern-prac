@@ -2,7 +2,7 @@
 
 <% blog = Blog.find(params[:id]) %>
 <p>
-  <%= blog[:id] %>: <span>投稿日時: <%= blog[:created_at] %> | <%= link_to 'いいね', "/likes/#{blog[:id]}", :method => 'post' %>: <%= blog[:like] %><br />
+  <%= blog[:id] %>: <span>投稿日時: <%= blog[:created_at] %> | <%= link_to 'いいね', {:controller => 'blogs', :action => 'like', :blog_id => blog[:id]}, :method => 'post' %>: <%= blog[:like] %><br />
   <%= blog[:body] %>
 </p>
 
